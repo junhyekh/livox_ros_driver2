@@ -47,7 +47,7 @@ class LidarPubHandler {
   ~ LidarPubHandler() {}
 
   void PointCloudProcess(RawPacket& pkt);
-  void SetLidarsExtParam(LidarExtParameter param);
+  ExtParameterDetailed SetLidarsExtParam(LidarExtParameter param);
   void GetLidarPointClouds(std::vector<PointXyzlt>& points_clouds);
 
   uint64_t GetRecentTimeStamp();
@@ -127,6 +127,7 @@ class PubHandler {
   std::map<uint32_t, std::unique_ptr<LidarPubHandler>> lidar_process_handlers_;
   std::map<uint32_t, std::vector<PointXyzlt>> points_;
   std::map<uint32_t, LidarExtParameter> lidar_extrinsics_;
+  std::map<uint32_t, ExtParameterDetailed> imu_extrinsics_;
   static std::atomic<bool> is_timestamp_sync_;
   uint16_t lidar_listen_id_ = 0;
 };

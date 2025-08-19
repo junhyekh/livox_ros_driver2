@@ -153,6 +153,9 @@ DriverNode::DriverNode(const rclcpp::NodeOptions & node_options)
     publish_freq = publish_freq;
   }
 
+  // log
+  RCLCPP_INFO(this->get_logger(), "publish_freq: %f", publish_freq);
+
   future_ = exit_signal_.get_future();
 
   /** Lidar data distribute control and lidar data source set */
